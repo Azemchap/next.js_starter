@@ -7,8 +7,8 @@ export default function Header() {
     return (
         <header className='bg-primary sticky top-0 z-40'>
             <div className='container p-4 flex items-center justify-between gap-2'>
-                <Link href={'/'} >LOGO</Link>
-                <nav className='hidden md:flex items-center gap-8'>
+                <Link href={'/'} className='font-semibold text-background' >LOGO</Link>
+                <nav className='hidden md:flex items-center text-background gap-8'>
                     <Link href={'/'} >Home</Link>
                     <Link href={'/about'} >About</Link>
                     <Link href={'/contact'} >Contact</Link>

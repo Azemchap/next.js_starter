@@ -20,7 +20,6 @@ export default async function page({ params }: { params: Params }) {
                 </Link>
                 <h2 className='text-2xl font-semibold mb-3'>{post?.title}</h2>
                 <p>{post?.content}</p>
-
                 {/* <Badge></Badge> */}
             </div>
         </section>
