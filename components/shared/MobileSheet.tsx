@@ -27,10 +27,16 @@ export function MobileSheet() {
                         Make changes to your profile here. Click save when you&apos;re done.
                     </SheetDescription>
                 </SheetHeader>
-                <nav className='flex flex-col gap-2'>
-                    <Link href={'/'} >Home</Link>
-                    <Link href={'/about'} >About</Link>
-                    <Link href={'/contact'} >Contact</Link>
+                <nav className='flex flex-col  my-8  bg-secondary/50 rounded'>
+                    <SheetTrigger asChild>
+                        <Link className="hover:bg-secondary/80 p-4 px-6" href={'/'} >Home</Link>
+                    </SheetTrigger>
+                    <SheetTrigger asChild>
+                        <Link className="hover:bg-secondary/80 p-4 px-6" href={'/about'} >About</Link>
+                    </SheetTrigger>
+                    <SheetTrigger asChild>
+                        <Link className="hover:bg-secondary/80 p-4 px-6" href={'/contact'} >Contact</Link>
+                    </SheetTrigger>
                 </nav>
                 <SheetFooter>
                     <SheetClose asChild>
