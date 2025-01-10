@@ -1,48 +1,67 @@
-import { Button } from '@/components/ui/button'
-import { prisma } from '@/lib/db'
-import { Plus } from 'lucide-react'
-import Link from 'next/link'
-import React from 'react'
+import { Button } from '@/components/ui/button';
+import { prisma } from '@/lib/db';
+import { Plus } from 'lucide-react';
+import Link from 'next/link';
+import React from 'react';
 
-export default async function page() {
-    // const posts = await prisma.post.findMany()
-    // const postCount = await prisma.post.count()
+interface Post {
+    id: string;
+    title: string;
+    slug: string;
+}
+
+interface PostSectionProps {
+    userPostCount: number;
+    userPosts: Post[];
+}
+
+const PostSection: React.FC<PostSectionProps> = ({ userPostCount, userPosts }) => (
+    <section className='py-12'>
+        <div className='container'>
+            <div className='flex items-center justify-between gap-4 mb-6'>
+                <h2 className='text-2xl font-semibold'>All posts ({userPostCount})</h2>
+                <Link href={'/posts/create'}>
+                    <Button size={'lg'} className='capitalize'>
+                        <Plus /> Create Post
+                    </Button>
+                </Link>
+            </div>
+            {userPosts.length === 0 ? (
+                <div className='border-t border-b border-primary/10 text-center py-16 leading-8'>
+                    <p>Post not found</p>
+                </div>
+            ) : (
+                <ul className='border-t border-b border-primary/10 py-4 leading-8'>
+                    {userPosts.map((post) => (
+                        <Link href={`/posts/${post.slug}`} key={post.id}>
+                            <li className='flex items-center justify-between px-5 py-1 hover:bg-secondary/60'>
+                                {post.title}
+                            </li>
+                        </Link>
+                    ))}
+                </ul>
+            )}
+        </div>
+    </section>
+);
+
+const Page: React.FC = async () => {
+    const userEmail = 'user1@example.com';
 
     const user = await prisma.user.findUnique({
         where: {
-            email: 'user1@example.com'
+            email: userEmail,
         },
-        include: { posts: true }
-    })
-    // const userPostCount = await prisma.user.findUnique({
-    //     where: {
-    //         email: 'azem@gmail.com'
-    //     },
-    //     include: { posts: true }
-    // }).posts
-    // // const userPostCount = await prisma.post.count()
+        include: { posts: true },
+    });
 
-    return (
-        <section className='py-12'>
-            <div className='container'>
-                <div className='flex items-center justify-between gap-4  mb-6'>
-                    <h2 className='text-2xl font-semibold'>All posts ({user?.posts.length})</h2>
-                    <Link href={'/posts/create'}>
-                        <Button size={'lg'} className='capitalize'><Plus /> Create Post</Button>
-                    </Link>
-                </div>
-                <ul className='border-t border-b border-primary/10 py-4 leading-8'>
-                    {
-                        user?.posts.map((post) => (
-                            <Link href={`/posts/${post.slug}`} key={post.id} >
-                                <li className='flex items-center justify-between px-5 py-1 hover:bg-secondary/60'>
-                                    {post.title}
-                                </li>
-                            </Link>
-                        ))
-                    }
-                </ul>
-            </div>
-        </section>
-    )
-}
+    const userPostCount: number = await prisma.post.count({
+        where: {
+            authorId: user?.id, // Assuming you have an authorId in your post model
+        },
+    });
+
+    return <PostSection userPostCount={userPostCount} userPosts={user?.posts || []} />;
+};
+
+export default Page;
