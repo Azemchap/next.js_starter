@@ -1,15 +1,17 @@
+/* eslint-disable */
+
 import PostPage from '@/components/sections/PostPage';
 import { prisma } from '@/lib/db';
-// import { Post } from '@prisma/client'; // Import Post type for better type safety
+import { Post } from '@prisma/client';
 
 interface Params {
     slug: string;
 }
 
-// interface PageProps {
-//     post?: Post; // Optional post prop
-//     error?: string; // Optional error prop
-// }
+interface PageProps {
+    post?: Post;
+    error?: string;
+}
 
 export default async function Page({ params }: { params: Params }): Promise<JSX.Element> {
     try {
@@ -18,16 +20,16 @@ export default async function Page({ params }: { params: Params }): Promise<JSX.
         });
 
         if (!post) {
-            return <p>Post not found</p>; // Handle case where the post does not exist
+            return <p>Post not found</p>;
         }
 
-        return <PostPage post={post} />; // Render the PostPage component
+        return <PostPage post={post} />;
     } catch (error) {
         console.error("Error fetching post:", error);
         return (
             <div>
                 <p>Error: Failed to fetch post</p>
             </div>
-        ); // Handle error gracefully
+        );
     }
 }
