@@ -63,7 +63,7 @@ export default function Page() {
                         />
                     </div>
                     <Button type="submit" className='bg-primary'>
-                        {isLoading ? <Spinner /> : <><Plus /> Create post</>}
+                        {isLoading ? <Spinner message='Creating post...' /> : <><Plus /> Create post</>}
                     </Button>
                 </form>
             </div>
