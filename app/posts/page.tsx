@@ -60,13 +60,13 @@ const Page = async () => {
         where: { authorId: user?.id },
     });
 
-    return {
-        props: {
-            userPostCount,
-            userPosts: user?.posts || [],
-        },
-        revalidate: 10,
-    };
+    return (
+        <PostSection userPostCount={userPostCount} userPosts={user?.posts || []} />
+    )
 };
+
+// Set revalidation time for ISR
+export const dynamic = 'force-dynamic';
+export const revalidate = 10;
 
 export default Page;
