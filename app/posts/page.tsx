@@ -1,3 +1,4 @@
+// app/posts/page.tsx
 import NotFound from '@/components/shared/NotFound';
 import { Button } from '@/components/ui/button';
 import prisma from '@/lib/db';
@@ -46,7 +47,8 @@ const PostSection: React.FC<PostSectionProps> = ({ userPostCount, userPosts }) =
     </section>
 );
 
-export const getStaticProps = async () => {
+// Server Component with ISR
+const Page = async () => {
     const userEmail = 'user1@example.com';
 
     const user = await prisma.user.findUnique({
@@ -55,7 +57,7 @@ export const getStaticProps = async () => {
     });
 
     const userPostCount: number = await prisma.post.count({
-        where: { authorId: user?.id }, // Assuming you have an authorId in your post model
+        where: { authorId: user?.id },
     });
 
     return {
@@ -63,34 +65,8 @@ export const getStaticProps = async () => {
             userPostCount,
             userPosts: user?.posts || [],
         },
-        revalidate: 10, // Revalidate every 10 seconds
+        revalidate: 10,
     };
 };
 
-// Define Page type to accept PostSectionProps
-const Page: React.FC<PostSectionProps> = ({ userPostCount, userPosts }) => {
-    return <PostSection userPostCount={userPostCount} userPosts={userPosts} />;
-};
-
 export default Page;
-
-// const PostsPage: React.FC = async () => {
-//     const userEmail = 'user1@example.com';
-
-//     const user = await prisma.user.findUnique({
-//         where: {
-//             email: userEmail,
-//         },
-//         include: { posts: true },
-//     });
-
-//     const userPostCount: number = await prisma.post.count({
-//         where: {
-//             authorId: user?.id, // Assuming you have an authorId in your post model
-//         },
-//     });
-
-//     return <PostSection userPostCount={userPostCount} userPosts={user?.posts || []} />;
-// };
-
-// export default PostsPage;
