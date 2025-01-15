@@ -1,5 +1,6 @@
 // components/Spinner.tsx
 
+import Link from 'next/link';
 import React from 'react';
 
 interface NotFoundProps {
@@ -9,9 +10,9 @@ interface NotFoundProps {
 const NotFound: React.FC<NotFoundProps> = ({ message }) => {
     return (
         <section className='py-12'>
-            <div className='container text-center'>
-                <p className='text-2xl mb-2 text-primary/70'>{message}</p>
-                <p className='text-muted-foreground max-w-xs mx-auto text-sm'>Create a post to let others interact with your posts</p>
+            <div className='container text-center border border-destructive/40 py-12 rounded bg-destructive/10'>
+                <p className='text-2xl mb-2 text-destructive/60'>{message}</p>
+                <Link href={'/posts'} className='text-muted-foreground underline underline-offset-2'>View all posts</Link>
             </div>
         </section>
     );

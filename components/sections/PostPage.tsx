@@ -56,8 +56,12 @@ const PostPage: React.FC<PageProps> = ({ post }) => {
                         <Trash /> Delete
                     </Button>
                 </div>
-                <h2 className='text-2xl font-semibold mb-3'>{post.title}</h2>
-                <p>{post.content}</p>
+
+                <div className='max-w-screen-lg mx-auto min-h-96 p-4 bg-background/20 rounded border'>
+                    <h2 className='text-2xl font-semibold mb-3'>{post.title}</h2>
+                    <p>{post.content}</p>
+                </div>
+
             </div>
             <ConfirmDeleteModal
                 isOpen={isModalOpen}
