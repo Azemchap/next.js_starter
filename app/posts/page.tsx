@@ -1,3 +1,4 @@
+import NotFound from '@/components/shared/NotFound';
 import { Button } from '@/components/ui/button';
 import { prisma } from '@/lib/db';
 import { Plus } from 'lucide-react';
@@ -28,7 +29,7 @@ const PostSection: React.FC<PostSectionProps> = ({ userPostCount, userPosts }) =
             </div>
             {userPosts.length === 0 ? (
                 <div className='border-t border-b border-primary/10 text-center py-16 leading-8'>
-                    <p>Post not found</p>
+                    <NotFound message='No post available' />
                 </div>
             ) : (
                 <ul className='border-t border-b border-primary/10 py-4 leading-8'>

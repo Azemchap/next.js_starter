@@ -35,7 +35,7 @@ export default function Page() {
     return (
         <section className='py-12'>
             <div className='max-w-screen-md mx-auto p-4'>
-                <Link href={'/posts'} className='flex mb-6'>
+                <Link href={'/posts'} className='inline-flex mb-6'>
                     <Button size={'sm'}><ArrowLeft /> All posts</Button>
                 </Link>
                 <h2 className='text-4xl font-semibold mb-5'>Create a post</h2>

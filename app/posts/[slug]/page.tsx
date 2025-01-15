@@ -1,7 +1,8 @@
 /* eslint-disable */
 
 import PostPage from '@/components/sections/PostPage';
-import { prisma } from '@/lib/db';
+import NotFound from '@/components/shared/NotFound';
+import prisma from '@/lib/db';
 
 interface Params {
     slug: string;
@@ -15,7 +16,7 @@ export default async function SinglePostPage({ params }: { params: Params }) {
     });
 
     if (!post) {
-        return <p>Post not found</p>; // Return a fallback message
+        return <NotFound message={'Post not available'} />; // Return a fallback message
     }
 
     return <PostPage post={post} />;
