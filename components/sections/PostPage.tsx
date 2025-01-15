@@ -25,7 +25,7 @@ const PostPage: React.FC<PageProps> = ({ post }) => {
     const handleDelete = async () => {
         try {
             await deletePost(post.id); // Ensure post.id is available
-            toast.success('Post deleted successfully!', {
+            toast.success('Post deleted!', {
                 autoClose: 4000,
             });
         } catch (error) {

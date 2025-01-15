@@ -19,14 +19,10 @@ export default function Page() {
 
         try {
             await createPost(formData); // Call the server action directly
-            toast.success('Post created successfully!', {
-                autoClose: 4000,
-            });
+            toast.success('Post created!');
         } catch (error) {
-            console.error('Error creating post:', error);
-            toast.error('Failed to create post.', {
-                autoClose: 4000,
-            });
+            console.error('Error creating post: ', error);
+            toast.error('Failed to create post.');
         } finally {
             setLoading(false); // Reset loading state
         }
@@ -38,10 +34,10 @@ export default function Page() {
                 <Link href={'/posts'} className='inline-flex mb-6'>
                     <Button size={'sm'}><ArrowLeft /> All posts</Button>
                 </Link>
-                <h2 className='text-4xl font-semibold mb-5'>Create a post</h2>
-                <form onSubmit={handleSubmit} className='flex flex-col gap-y-2 border rounded p-6'>
+                <h2 className='text-lg font-semibold mb-6 uppercase '>Create a new Post</h2>
+                <form onSubmit={handleSubmit} className='flex flex-col gap-y-2 '>
                     <div className='mb-5'>
-                        <label htmlFor="title">Post Title</label>
+                        <label htmlFor="title">Post title</label>
                         <input
                             type="text"
                             id="title"

@@ -5,7 +5,7 @@ import { MobileSheet } from '../shared/MobileSheet'
 
 export default function Header() {
     return (
-        <header className='bg-primary sticky top-0 z-40'>
+        <header className='bg-primary fixed z-40 top-0 left-0 right-0 w-full'>
             <div className='container p-4 flex items-center justify-between gap-2'>
                 <Link href={'/'} className='font-semibold text-background' >LOGO</Link>
                 <nav className='hidden md:flex items-center text-background gap-8'>

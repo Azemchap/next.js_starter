@@ -38,10 +38,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="min-h-screen">
+          <main className="min-h-screen pt-12">
             {children}
           </main>
-          <ToastContainer />
+          <ToastContainer position="bottom-right" hideProgressBar={true} autoClose={2000} />
         </ThemeProvider>
       </body>
     </html>

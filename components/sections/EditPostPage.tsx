@@ -23,10 +23,6 @@ const EditPost: React.FC<EditPostProps> = ({ post }) => {
     const [title, setTitle] = useState(post.title);
     const [content, setContent] = useState(post.content);
 
-    if (!post) {
-        return <div className='py-12'><Spinner message='Loading...' /></div>;
-    }
-
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setLoading(true);
@@ -37,14 +33,10 @@ const EditPost: React.FC<EditPostProps> = ({ post }) => {
 
         try {
             await updatePost(post.id, formData);
-            toast.success('Changes saved successfully!', {
-                autoClose: 4000,
-            });
+            toast.success('Changes saved!');
         } catch (error) {
             console.error('Error saving changes:', error);
-            toast.error('Failed to update post.', {
-                autoClose: 4000,
-            });
+            toast.error('Failed to save changes.');
         } finally {
             setLoading(false);
         }
@@ -56,8 +48,8 @@ const EditPost: React.FC<EditPostProps> = ({ post }) => {
                 <Link href={'/posts'} className='inline-flex mb-6'>
                     <Button size={'sm'}><ArrowLeft /> All posts</Button>
                 </Link>
-                <h2 className='text-4xl font-semibold mb-5'>Update post</h2>
-                <form onSubmit={handleSubmit} className='flex flex-col gap-y-2 border rounded p-6'>
+                <h2 className='text-lg font-semibold mb-6 uppercase'>Update post</h2>
+                <form onSubmit={handleSubmit} className='flex flex-col gap-y-2'>
                     <div className='mb-5'>
                         <label htmlFor="title">Post Title</label>
                         <input
