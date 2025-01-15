@@ -1,6 +1,6 @@
 import NotFound from '@/components/shared/NotFound';
 import { Button } from '@/components/ui/button';
-import { prisma } from '@/lib/db';
+import prisma from '@/lib/db';
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
