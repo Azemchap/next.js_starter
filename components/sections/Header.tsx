@@ -7,9 +7,9 @@ export default function Header() {
     return (
         <header className='bg-primary fixed z-40 top-0 left-0 right-0 w-full'>
             <div className='container p-4 flex items-center justify-between gap-2'>
-                <Link href={'/'} className='font-semibold text-background' >LOGO</Link>
+                <Link href={'/'} className='font-semibold text-background uppercase' >HOME</Link>
                 <nav className='hidden md:flex items-center text-background gap-8'>
-                    <Link href={'/'} >Home</Link>
+                    <Link href={'/posts'} >Post</Link>
                     <Link href={'/about'} >About</Link>
                     <Link href={'/contact'} >Contact</Link>
                 </nav>

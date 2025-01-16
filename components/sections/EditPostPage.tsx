@@ -46,12 +46,12 @@ const EditPost: React.FC<EditPostProps> = ({ post }) => {
         <section className='py-12'>
             <div className='max-w-screen-md mx-auto p-4'>
                 <Link href={'/posts'} className='inline-flex mb-6'>
-                    <Button size={'sm'}><ArrowLeft /> All posts</Button>
+                    <Button size={'sm'} variant="secondary"><ArrowLeft /> All posts</Button>
                 </Link>
                 <h2 className='text-lg font-semibold mb-6 uppercase'>Update post</h2>
                 <form onSubmit={handleSubmit} className='flex flex-col gap-y-2'>
                     <div className='mb-5'>
-                        <label htmlFor="title">Post Title</label>
+                        <label className='text-muted-foreground' htmlFor="title">Post Title</label>
                         <input
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
@@ -63,7 +63,7 @@ const EditPost: React.FC<EditPostProps> = ({ post }) => {
                         />
                     </div>
                     <div className='mb-5'>
-                        <label htmlFor="content">Content</label>
+                        <label className='text-muted-foreground' htmlFor="content">Content</label>
                         <textarea
                             value={content}
                             onChange={(e) => setContent(e.target.value)}

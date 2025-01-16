@@ -40,7 +40,7 @@ const PostPage: React.FC<PageProps> = ({ post }) => {
 
     return (
         <section className='py-12'>
-            <div className='container'>
+            <div className='max-w-screen-md mx-auto p-4'>
                 <div className='flex items-center gap-4 mb-6'>
                     <Link href={'/posts'} className='flex'>
                         <Button variant="secondary" size={'sm'}>

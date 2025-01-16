@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import Spinner from '@/components/shared/Spinner';
 import { createPost } from '@/actions/actions';
-import { toast } from 'react-toastify'; // Import toast
+import { toast } from 'react-toastify'; 
 
 export default function Page() {
     const [isLoading, setLoading] = useState(false); // Add loading state
@@ -32,12 +32,12 @@ export default function Page() {
         <section className='py-12'>
             <div className='max-w-screen-md mx-auto p-4'>
                 <Link href={'/posts'} className='inline-flex mb-6'>
-                    <Button size={'sm'}><ArrowLeft /> All posts</Button>
+                    <Button size={'sm'} variant="outline"><ArrowLeft /> All posts</Button>
                 </Link>
                 <h2 className='text-lg font-semibold mb-6 uppercase '>Create a new Post</h2>
                 <form onSubmit={handleSubmit} className='flex flex-col gap-y-2 '>
                     <div className='mb-5'>
-                        <label htmlFor="title">Post title</label>
+                        <label className='text-muted-foreground' htmlFor="title">Post title</label>
                         <input
                             type="text"
                             id="title"
@@ -48,7 +48,7 @@ export default function Page() {
                         />
                     </div>
                     <div className='mb-5'>
-                        <label htmlFor="content">Content</label>
+                        <label className='text-muted-foreground' htmlFor="content">Content</label>
                         <textarea
                             rows={8}
                             id="content"
@@ -59,7 +59,7 @@ export default function Page() {
                         />
                     </div>
                     <Button type="submit" className='bg-primary'>
-                        {isLoading ? <Spinner message='Creating post...' /> : <><Plus /> Create post</>}
+                        {isLoading ? <Spinner message='Creating...' /> : <><Plus /> Create Post</>}
                     </Button>
                 </form>
             </div>
