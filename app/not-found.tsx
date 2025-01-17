@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
 
 const NotFound = () => {
     return (
@@ -10,8 +12,8 @@ const NotFound = () => {
                 <h1 className="text-6xl font-bold animate-bounce mt-6">404</h1>
                 <p className="text-xl mt-4">Oops! The page you are looking for does not exist.</p>
                 <div className="mt-6">
-                    <Link href="/" passHref className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-                        Go to Homepage
+                    <Link href={'/'} className='inline-flex mb-6'>
+                        <Button size={'sm'} variant="outline"><ArrowLeft /> Go back to Homepage</Button>
                     </Link>
                 </div>
                 <div className="mt-16">

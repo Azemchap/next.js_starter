@@ -28,16 +28,15 @@ const PostSection: React.FC<PostSectionProps> = ({ userPostCount, userPosts }) =
                     </Button>
                 </Link>
             </div>
+            <div className='border-t border-primary/10'></div>
             {userPosts.length === 0 ? (
-                <div className='border-t  border-primary/10 text-center py-16 leading-8'>
-                    <NotFound message='No post available' />
-                </div>
+                <NotFound message='No post available' />
             ) : (
-                <ul className='border-t border-primary/10 py-4 leading-8'>
+                <ul className=' py-4 leading-8'>
                     {userPosts.map((post, index) => (
                         <Link href={`/posts/${post.slug}`} key={post.id}>
                             <li className='flex items-center gap-2 px-5 py-1 hover:bg-secondary/60'>
-                                <span>{`${index +1}.`}</span> {post.title}
+                                <span>{`${index + 1}.`}</span> {post.title}
                             </li>
                         </Link>
                     ))}
